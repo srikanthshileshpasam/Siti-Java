@@ -23,8 +23,47 @@
     <version>3.1.0</version>
     <scope>provided</scope>
 	</dependency>
+	
+	<dependency>
+        <groupId>org.springframework</groupId>
+    <!-- <artifactId>spring-webmvc</artifactId>--> 
+     <artifactId>spring-context</artifactId>
+        <version>5.2.3.RELEASE</version>
+    </dependency>
     
+       <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>5.2.3.RELEASE</version>
+        </dependency>
+      
+    <dependency>
+        <groupId>org.springframework</groupId>
+    <!-- <artifactId>spring-webmvc</artifactId>--> 
+     <artifactId>spring-webmvc</artifactId>
+        <version>5.2.3.RELEASE</version>
+    </dependency>
+    
+    
+    <dependency>
+	<groupId>commons-logging</groupId>
+	<artifactId>commons-logging</artifactId>
+	<version>1.2</version>
+</dependency>
+
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>2.9.5</version>
+    </dependency>
+    
+    
+   
   </dependencies>
+  <properties>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+</properties>
   <build>
     <finalName>Siti</finalName>
   </build>

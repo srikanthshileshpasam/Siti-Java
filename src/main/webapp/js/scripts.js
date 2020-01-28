@@ -1,3 +1,4 @@
+
 function userLogin()
 {
 		  			
@@ -7,5 +8,12 @@ function userLogin()
   
   alert(userId);
   alert(userPassword);
+  
+  $.ajax({
+      url : '/validatelogin',
+      success : function(data) {
+         
+      }
+  });
   
 }
