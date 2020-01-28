@@ -42,7 +42,7 @@
         </div>
 
         <!-- Login Form -->
-        <form action="/validateLogin" >
+        <form action="Login/validateLogin" >
           <input type="text" id="login" class="fadeIn second" name="login" placeholder="Enter Login Id">
           <input type="text" id="password" class="fadeIn third" name="pass" placeholder="Enter Password">
           <input type="submit" class="fadeIn fourth" value="Log In" >

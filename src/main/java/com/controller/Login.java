@@ -5,15 +5,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@Controller
-
+@RestController
+@RequestMapping("Login")
 public class Login {
-	@Autowired
+	
 	@RequestMapping("/validateLogin")
-	public @ResponseBody String validateUserLogin() 
+	public void validateUserLogin() 
 	{
-		return "<h1>Inside handlerOne() Method Of MyController</h1>";
-    }
+		System.out.println("Eureka");    }
 	
 	
 }
