@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-152404059-1"></script>
-		<script>
-		  		window.dataLayer = window.dataLayer || [];
-		  		function gtag(){dataLayer.push(arguments);}
-		  		gtag('js', new Date());
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-152404059-1"></script>
+			<script>
+			  		window.dataLayer = window.dataLayer || [];
+			  		function gtag(){dataLayer.push(arguments);}
+			  		gtag('js', new Date());
 
-		  		gtag('config', 'UA-152404059-1');
-		</script>
+			  		gtag('config', 'UA-152404059-1');
+			</script>
 
-	<title>Siti - Agent</title>
+		<title>Siti - Agent</title>
 
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" type="text/css" href="agent.css">
+	  <link rel="stylesheet" type="text/css" href="agent.css">
 
-  <meta name="Siti Web Application" content="Web Database Application for SITI Communication Network">
-</head>
+	  <meta name="Siti Web Application" content="Web Database Application for SITI Communication Network">
+	</head>
 
   <body>
 		<div class="container-contact100">
@@ -36,7 +36,7 @@
 					</div>
 
 					<div class="container-contact100-form-btn space">
-						<button class="contact100-form-btn">
+						<button onclick="toggle()" class="contact100-form-btn">
 							<span>
 								<a>Validate VC</a>
 								<i aria-hidden="true"></i>
@@ -44,7 +44,7 @@
 						</button>
 					</div>
 
-					<div class="wrap-contact100">
+					<div id="toggleDIV" class="wrap-contact100">
 						<span>
 										<ul class="label-input100">
 											<p>Customer VC -</p>
