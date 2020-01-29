@@ -42,10 +42,11 @@
         </div>
 
         <!-- Login Form -->
-        <form action="Login/validateLogin" >
-          <input type="text" id="login" class="fadeIn second" name="login" placeholder="Enter Login Id">
+        <form action="Login/validateLogin" id="loginform" >
+          <input type="text" id="login" class="fadeIn second" name="id" placeholder="Enter Login Id">
           <input type="text" id="password" class="fadeIn third" name="pass" placeholder="Enter Password">
-          <input type="submit" class="fadeIn fourth" value="Log In" >
+         <input type="submit" class="fadeIn fourth" value="Log In" >
+      <!--      <input type="button" class="fadeIn fourth" value="Log In" onClick="userLogin()" > -->
         </form>
 
         <!-- Remind Passowrd -->
