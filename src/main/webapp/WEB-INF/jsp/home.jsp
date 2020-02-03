@@ -11,8 +11,10 @@
 			  		gtag('config', 'UA-152404059-1');
 			</script>
 			 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="js/toggle.js"></script>
-
+        <script type="text/javascript" src="js/toggle.js"></script>
+        <script>
+        
+        </script>
 		<title>Siti - Agent</title>
         <script type="text/javascript"
     src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
@@ -48,7 +50,7 @@
 						</button>
 					</div>
 
-					<div id="toggleDIV">
+					<div id="toggleDIV" style="display: none;">
 					<div class="wrap-contact100">
 						<span>
 										<ul class="label-input100">
@@ -98,7 +100,7 @@
 			</div>
 		</div>
 
-		<script type="text/javascript" src="toggle.js"></script>
+	<!--  	<script type="text/javascript" src="js/toggle.js"></script> -->
 
 	</body>
 </html>
