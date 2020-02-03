@@ -1,16 +1,11 @@
 package com.model;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 public class LoginVO {
 
 	
 	public String id;
-	public String loginError;
-	public String getLoginError() {
-		return loginError;
-	}
-	public void setLoginError(String loginError) {
-		this.loginError = loginError;
-	}
 	public String getId() {
 		return id;
 	}

@@ -1,9 +1,14 @@
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
+
 <!DOCTYPE html>
-<html lang="en">
+
 <head>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
-	   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="js/scripts.js"></script>
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-152404059-1"></script>
 		<script>
@@ -45,7 +50,10 @@
         <form action="Login/validateLogin" id="loginform" >
           <input type="text" id="login" class="fadeIn second" name="id" placeholder="Enter Login Id">
           <input type="text" id="password" class="fadeIn third" name="pass" placeholder="Enter Password">
-         <input type="submit" class="fadeIn fourth" value="Log In" >
+           <div id="errordiv">
+           
+           </div>
+         <input id ="submitForm" type="button" class="fadeIn fourth" value="Log In" >
       <!--      <input type="button" class="fadeIn fourth" value="Log In" onClick="userLogin()" > -->
         </form>
 

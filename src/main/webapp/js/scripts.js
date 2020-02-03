@@ -1,9 +1,18 @@
+var nextPageName="";
 jQuery(document).ready(function($) {
-	$("#loginform").submit(function(event) {
-
-		// Prevent the form from submitting via the browser.
-		event.preventDefault();
-		searchAjax();
+	$("#submitForm").click(function(event) {
+		
+		document.getElementById("errordiv").innerHTML="";
+		if(validateLogin())
+			{
+			
+		    searchAjax();  
+		    
+			}
+		else
+			{
+			document.getElementById("errordiv").innerHTML="Please enter all fields.!";
+			}
 
 	});
 });
@@ -13,29 +22,115 @@ function searchAjax() {
 	
 	var userId=document.getElementById("login").value;
 	var userPassword=document.getElementById("password").value;
-	alert(userId);
-	alert(userPassword);
-//	var data = "id="+userId+"&pass="+userPassword;
+	console.log("Inside search Ajax method()");
+
 	var loginData = {
 			"id": userId, 
 	        "pass": userPassword
 		   }
-	/*data["query"] = $("#query").val();*/
-	/*var login ={ "id": userId, "pass": userPassword }*/
+	
 	$.ajax({
-		type : "POST",
-		contentType : "application/text",
-		url : "Login/validateLogin",
-		data: JSON.stringify(loginData),
-	    contentType: "application/json; charset=utf-8",
-	    dataType: "json",
-	    success: function(){
-	           
-	    	console.log("passed");
-	    	
-	    },
-	    failure: function(errMsg) {
-	        alert(errMsg);
-	    }
+		type : 'POST',
+	    contentType : 'application/json',
+		url : 'Login/validateLogin',
+		data : JSON.stringify(loginData),
+		headers: {
+		      "Content-Type": "application/json",
+		      "cache-control": "no-cache"
+		     
+		    },
+		timeout : 100000,
+		success : function(response) {
+		//	console.log("SUCCESS: ", response);
+			getUserPageName();
+			
+		//	console.log("pageName="+pageName);
+			
+			
+				
+				 
+		    
+		},
+		error : function(e) {
+			console.log("ERROR: ", e);
+			
+		},
+		done : function(e) {
+			console.log("DONE");
+			
+		}
 	});
+	
+	console.log("End search Ajax method()");
+	
 }
+
+
+
+function validateLogin() 
+{
+	var userId=document.getElementById("login").value;
+	var userPassword=document.getElementById("password").value;
+	
+	if(userId!= null && userId!="" && userPassword!= null && userPassword!="")
+		{
+		
+		 return true;
+		}
+   
+  
+
+return false;
+
+}
+
+function getUserPageName()
+{   
+	
+	console.log("inside getUserPageName method()");
+	
+	$.ajax({
+		type : 'POST',
+	    contentType : 'application/json',
+		url : 'Login/pagename',
+		headers: {
+		      "Content-Type": "application/json",
+		      "cache-control": "no-cache" 
+		    },
+		timeout : 100000,
+		success : function(response) {
+			console.log("SUCCESS for page name: ", response);
+			 
+			if(response!=null)
+				{
+				var nextPageName=response;
+				if(nextPageName!=null)
+				{
+
+			    	if(nextPageName==="home")
+			    	{
+				 	document.write(nextPageName);
+			    	}
+			    	else
+			    	{
+			    	document.getElementById("errordiv").innerHTML="Invalid credentials";
+			    	}
+				}
+			 }
+			console.log("end getUserPageName method() with nextPageName "+nextPageName);
+			return nextPageName;
+			
+		
+		},
+		error : function(e) {
+			console.log("ERROR: ", e);
+			
+		}
+	});
+	
+	return nextPageName;
+	
+	
+}
+
+
