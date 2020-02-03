@@ -42,7 +42,7 @@ function searchAjax() {
 		timeout : 100000,
 		success : function(response) {
 		//	console.log("SUCCESS: ", response);
-			getUserPageName();
+			getUserPageName(response);
 			
 		//	console.log("pageName="+pageName);
 			
@@ -84,11 +84,11 @@ return false;
 
 }
 
-function getUserPageName()
+function getUserPageName(responsepage)
 {   
 	
 	console.log("inside getUserPageName method()");
-	
+	console.log("responsepage="+responsepage);
 	$.ajax({
 		type : 'POST',
 	    contentType : 'application/json',
@@ -109,7 +109,7 @@ function getUserPageName()
 
 			    	if(nextPageName==="home")
 			    	{
-				 	document.write(nextPageName);
+				 	document.write(responsepage);
 			    	}
 			    	else
 			    	{

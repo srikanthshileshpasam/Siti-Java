@@ -24,7 +24,7 @@ public class Login {
 	
 	@RequestMapping(value="/validateLogin", method = { RequestMethod.GET, RequestMethod.POST })
 	
-	public String validateUserLogin(@RequestBody LoginVO  lLoginVO,HttpServletRequest request) throws IOException
+	public ModelAndView validateUserLogin(@RequestBody LoginVO  lLoginVO,HttpServletRequest request) throws IOException
 	{
 		
 		
@@ -37,10 +37,10 @@ public class Login {
 		if(result==0)
 		{    
 		request.getSession().setAttribute("page","home");
-		return "home";
+		return new ModelAndView("home");
 		}
 		request.getSession().setAttribute("page","index");
-		return "index";
+		return new ModelAndView("index");
     }
 	
 	@RequestMapping(value="/pagename", method = { RequestMethod.GET, RequestMethod.POST })
