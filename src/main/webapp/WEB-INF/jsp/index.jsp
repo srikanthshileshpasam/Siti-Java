@@ -49,12 +49,14 @@ pageEncoding="ISO-8859-1"%>
         <form action="Login/validateLogin" id="loginform" >
           <input type="text" id="login" class="fadeIn second" name="id" placeholder="Enter Login Id">
           <input type="text" id="password" class="fadeIn third" name="pass" placeholder="Enter Password">
-           <div id="errordiv">
-           
-           </div>
+          
          <input id ="submitForm" type="button" class="fadeIn fourth" value="Log In" >
       <!--      <input type="button" class="fadeIn fourth" value="Log In" onClick="userLogin()" > -->
+         <div id="errordiv">
+           
+           </div>
         </form>
+       
 
         <!-- Remind Passowrd -->
       <!--    <div id="formFooter">

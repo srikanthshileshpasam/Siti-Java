@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 
 public class LoginDAO 
 {
@@ -30,7 +29,7 @@ public class LoginDAO
 		Connection conn=getConnection();
 	    PreparedStatement pstmt=null;
 	    if(conn!=null){
-	    	String selectSQL="SELECT password,user_status,user_type from user where user_id="+userId;
+	    	String selectSQL="SELECT password,user_status,user_type,name from user where user_id="+userId;
 	        pstmt=conn.prepareStatement(selectSQL);
 	       
 	        ResultSet rs=pstmt.executeQuery();
@@ -42,6 +41,7 @@ public class LoginDAO
             	 respLoginVO.setLoginValid(0);
             	 respLoginVO.setUserStatus(rs.getString(2));
             	 respLoginVO.setUserType(rs.getString(3));
+            	 respLoginVO.setUserName(rs.getString(4));
             	 System.out.println("User is validated ....");
             	 respLoginVO.setLoginValid(0);
              }

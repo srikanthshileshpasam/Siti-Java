@@ -38,8 +38,12 @@
 
 					<div class="wrap-input100 bg1 rs1-wrap-input100 validate-input" data-validate = "Enter VC Number">
 						<span class="label-input100">VC Number</span>
-						<input class="input100" type="text" pattern="[0]{1}[1-9]{10}" maxlength="11" name="vc_no" id="vc_no" placeholder="Enter VC Number" required>
+						<input class="input100"  type="text" maxlength="11" name="vc_no" id="vc_no" placeholder="Enter VC Number">
+						<div id="errordiv">
+           
+                      </div>
 					</div>
+					
 
 					<div class="container-contact100-form-btn space">
 						<button onclick="toggle()" class="contact100-form-btn">
@@ -53,15 +57,16 @@
 					<div id="toggleDIV" style="display: none;">
 					<div class="wrap-contact100">
 						<span>
+										 
 										<ul class="label-input100">
-											<p>Customer VC -</p>
-											<li class="input100"></li>
-											<p>Customer Name -</p>
-											<li class="input100"></li>
-											<p>Customer Phone -</p>
-											<li class="input100"></li>
-											<p>Due Date -</p>
-											<li class="input100"></li>
+											 <p id="readVc" ></p>
+											
+											
+											<p id="readcname"></p>
+										
+											<p id="readcphone"></p>
+											
+											<p id="readduedate"></p>
 										</ul>
 						</span>
 					</div>

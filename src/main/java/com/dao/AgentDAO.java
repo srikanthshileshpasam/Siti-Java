@@ -31,32 +31,14 @@ public class AgentDAO {
 		Connection conn=getConnection();
 	    PreparedStatement pstmt=null;
 	    if(conn!=null){
-	    	String selectSQL="SELECT vc_no,\r\n" + 
-	    			"       sms_id,\r\n" + 
-	    			"       location_id,\r\n" + 
-	    			"       customer_name,\r\n" + 
-	    			"       address,\r\n" + 
-	    			"       area,\r\n" + 
-	    			"       city,\r\n" + 
-	    			"       card_no,\r\n" + 
-	    			"       status,\r\n" + 
-	    			"       cell_1,\r\n" + 
-	    			"       cell_2,\r\n" + 
-	    			"       package,\r\n" + 
-	    			"       package_sub,\r\n" + 
-	    			"       last_paid,\r\n" + 
-	    			"       next_bill_date\r\n" + 
-	    			"  FROM customer_detail where vc_no ="+vcnumber;
+	    	String selectSQL="SELECT vc_no,sms_id,location_id,customer_name,address,area,city,card_no,status,cell_1,cell_2,package, package_sub, last_paid,next_bill_date FROM customer_detail where vc_no ="+vcnumber;
 	        pstmt=conn.prepareStatement(selectSQL);
 	       
 	        ResultSet rs=pstmt.executeQuery();
 	        
-	        if(rs.next())
+	        while(rs.next())
 	        {
-	       
-            if ("active".equals(rs.getString(9)))
-            {   
-            	respCustVO.setStatus("Activated");
+	        	System.out.println("Query executed...");	
             	respCustVO.setVc_no(rs.getString(1));
             	respCustVO.setSms_id(rs.getString(2));
             	respCustVO.setLocation_id(rs.getString(3));
@@ -65,24 +47,14 @@ public class AgentDAO {
             	respCustVO.setArea(rs.getString(6));
             	respCustVO.setCity(rs.getString(7));
             	respCustVO.setCard_no(rs.getString(8));
+            	respCustVO.setStatus(rs.getString(9));
             	respCustVO.setCell_no(rs.getString(10));
             	respCustVO.setCell_no2(rs.getString(11));
             	respCustVO.setPkg(rs.getString(12));
             	respCustVO.setPkg_sub(rs.getString(13));
             	respCustVO.setLast_paid(rs.getString(14));
-            	respCustVO.setNext_billdate(rs.getString(15));
-            	
-            	
-            }
-            else
-            {
-            	respCustVO.setStatus("Deactivated");
-            }
-	        }
-	        else
-	        {
-	        	respCustVO.setStatus("No customer found with entered VC number");
-	        	
+            	respCustVO.setNext_billdate(rs.getString(15));  	
+           
 	        }
 		
 	    }

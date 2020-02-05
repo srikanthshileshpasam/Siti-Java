@@ -1,6 +1,5 @@
 package com.model;
 
-import com.fasterxml.jackson.annotation.JsonView;
 
 public class LoginVO {
 
@@ -40,5 +39,12 @@ public class LoginVO {
 	}
 	public void setLoginValid(int loginValid) {
 		this.loginValid = loginValid;
+	}
+	public String userName;
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 }

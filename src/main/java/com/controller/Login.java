@@ -4,14 +4,11 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.context.annotation.Scope;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.model.LoginVO;
@@ -40,9 +37,12 @@ public class Login {
 		request.getSession().setAttribute("page","home");
 		else if (result.getUserType().equals("admin"))
 		request.getSession().setAttribute("page","adminHome");
+		
+		request.getSession().setAttribute("name",result.getUserName());
 		return new ModelAndView(request.getSession().getAttribute("page")+"");
 		}
 		request.getSession().setAttribute("page","index");
+		request.getSession().setAttribute("name","");
 		return new ModelAndView("index");
     }
 	

@@ -78,7 +78,7 @@ h1,h2,h3,h4,h5,h6 {
 
 p {
 	font-family: Poppins-Regular;
-	font-size: 14px;
+	font-size: 25px;
 	line-height: 1.7;
 	color: #666666;
 	margin: 0px;
@@ -86,6 +86,7 @@ p {
 
 ul, li {
 	margin: 0px;
+	font-size: 25px;
 	list-style-type: none;
 }
 
@@ -238,7 +239,7 @@ iframe {
 
 .label-input100 {
   font-family: Montserrat-SemiBold;
-  font-size: 10px;
+  font-size: 25px;
   color: #393939;
   line-height: 1.5;
   text-transform: uppercase;

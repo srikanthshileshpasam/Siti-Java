@@ -61,7 +61,7 @@ function searchAjax() {
 		}
 	});
 	
-	console.log("End search Ajax method()");
+	//console.log("End search Ajax method()");
 	
 }
 
