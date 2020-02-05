@@ -5,20 +5,14 @@ import com.model.LoginVO;
 
 public class LoginService {
 	
-	public int validateUser(LoginVO lLoginVO)
+	public LoginVO validateUser(LoginVO lLoginVO)
 	{
 		System.out.println("In LoginService method = validateUser() ");
 		LoginDAO lLoginDAO= new LoginDAO();
-		int result =  lLoginDAO.validateUser(lLoginVO);
+		LoginVO result =  lLoginDAO.validateUser(lLoginVO);
+	
 		
-		if(result == 0)
-		{
-			
-			return result;
-			
-		}
-		
-		return 1;
+		return result;
 		
 		
 	}

@@ -22,7 +22,7 @@ function searchAjax() {
 	
 	var userId=document.getElementById("login").value;
 	var userPassword=document.getElementById("password").value;
-	console.log("Inside search Ajax method()");
+//	console.log("Inside search Ajax method()");
 
 	var loginData = {
 			"id": userId, 
@@ -87,8 +87,8 @@ return false;
 function getUserPageName(responsepage)
 {   
 	
-	console.log("inside getUserPageName method()");
-	console.log("responsepage="+responsepage);
+//	console.log("inside getUserPageName method()");
+//	console.log("responsepage="+responsepage);
 	$.ajax({
 		type : 'POST',
 	    contentType : 'application/json',
@@ -99,7 +99,7 @@ function getUserPageName(responsepage)
 		    },
 		timeout : 100000,
 		success : function(response) {
-			console.log("SUCCESS for page name: ", response);
+			//console.log("SUCCESS for page name: ", response);
 			 
 			if(response!=null)
 				{
@@ -107,7 +107,7 @@ function getUserPageName(responsepage)
 				if(nextPageName!=null)
 				{
 
-			    	if(nextPageName==="home")
+			    	if(nextPageName!="index")
 			    	{
 				 	document.write(responsepage);
 			    	}
@@ -117,7 +117,7 @@ function getUserPageName(responsepage)
 			    	}
 				}
 			 }
-			console.log("end getUserPageName method() with nextPageName "+nextPageName);
+		//	console.log("end getUserPageName method() with nextPageName "+nextPageName);
 			return nextPageName;
 			
 		

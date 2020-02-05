@@ -30,14 +30,17 @@ public class Login {
 		
 		System.out.println("Validating User Credentials");   
 		LoginService lLoginService=new LoginService();
-		int result = lLoginService.validateUser(lLoginVO);
+		LoginVO result = lLoginService.validateUser(lLoginVO);
 		System.out.println(result);
 		
 		
-		if(result==0)
+		if(result.getLoginValid()==0 && result.getUserStatus().equals("active"))
 		{    
+		if(result.getUserType().equals("agent"))
 		request.getSession().setAttribute("page","home");
-		return new ModelAndView("home");
+		else if (result.getUserType().equals("admin"))
+		request.getSession().setAttribute("page","adminHome");
+		return new ModelAndView(request.getSession().getAttribute("page")+"");
 		}
 		request.getSession().setAttribute("page","index");
 		return new ModelAndView("index");

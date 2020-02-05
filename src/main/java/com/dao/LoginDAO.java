@@ -20,26 +20,34 @@ public class LoginDAO
 		  return connection;
 		 }
 	 
-	public int validateUser(LoginVO lLoginVO)
+	public LoginVO validateUser(LoginVO lLoginVO)
 	{
 		System.out.println("In LoginDAO method = validateUser() ");
-		
+		LoginVO respLoginVO =new LoginVO();
 		String userId= lLoginVO.getId();
 		String userPass=lLoginVO.getPass();
 		try {
 		Connection conn=getConnection();
 	    PreparedStatement pstmt=null;
 	    if(conn!=null){
-	    	String selectSQL="SELECT password from user where user_id="+userId;
+	    	String selectSQL="SELECT password,user_status,user_type from user where user_id="+userId;
 	        pstmt=conn.prepareStatement(selectSQL);
 	       
 	        ResultSet rs=pstmt.executeQuery();
 	        while(rs.next()){
 	        // System.out.println(""+rs.getString(1));
-             if (userPass.equals(rs.getString(1)))
+             if (userPass.equals(rs.getString(1)) && "active".equals(rs.getString(2)))
              {   
+            	 
+            	 respLoginVO.setLoginValid(0);
+            	 respLoginVO.setUserStatus(rs.getString(2));
+            	 respLoginVO.setUserType(rs.getString(3));
             	 System.out.println("User is validated ....");
-            	 return 0;
+            	 respLoginVO.setLoginValid(0);
+             }
+             else
+             {
+            	 respLoginVO.setLoginValid(1);
              }
 	        }
 		
@@ -52,7 +60,7 @@ public class LoginDAO
 			e.printStackTrace();
 		}
 		
-		return 1;
+		return respLoginVO;
 		
 		
 	}
