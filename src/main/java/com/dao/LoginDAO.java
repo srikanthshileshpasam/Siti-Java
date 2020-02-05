@@ -23,13 +23,13 @@ public class LoginDAO
 	{
 		System.out.println("In LoginDAO method = validateUser() ");
 		LoginVO respLoginVO =new LoginVO();
-		String userId= lLoginVO.getId();
+		String userId= lLoginVO.getId()+"";
 		String userPass=lLoginVO.getPass();
 		try {
 		Connection conn=getConnection();
 	    PreparedStatement pstmt=null;
 	    if(conn!=null){
-	    	String selectSQL="SELECT password,user_status,user_type,name from user where user_id="+userId;
+	    	String selectSQL="SELECT password,user_status,user_type,name,user_id from user where user_id="+userId;
 	        pstmt=conn.prepareStatement(selectSQL);
 	       
 	        ResultSet rs=pstmt.executeQuery();
@@ -42,8 +42,9 @@ public class LoginDAO
             	 respLoginVO.setUserStatus(rs.getString(2));
             	 respLoginVO.setUserType(rs.getString(3));
             	 respLoginVO.setUserName(rs.getString(4));
+            	 respLoginVO.setId(Integer.parseInt(rs.getString(5)));
             	 System.out.println("User is validated ....");
-            	 respLoginVO.setLoginValid(0);
+      
              }
              else
              {

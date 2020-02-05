@@ -73,33 +73,41 @@
 
 					<div class="wrap-input100 rs1-wrap-input100 validate-input bg1" data-validate="Please Type Receipt Number">
 						<span class="label-input100">Receipt Number *</span>
-						<input class="input100" type="number" name="receipt" placeholder="Enter Receipt Number" required>
+						<input class="input100" id="receipt" type="number" name="receipt" placeholder="Enter Receipt Number" required>
 					</div>
 
 					<div class="wrap-input100 validate-input bg1 rs1-wrap-input100">
 						<span class="label-input100">Package *</span>
-						<input class="input100" name="package" placeholder="Customer package choice" placeholder="Enter Amount Paid" required>
+						<input class="input100" name="package" id="package" placeholder="Customer package choice" placeholder="Enter Amount Paid" required>
 					</div>
 
 					<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Enter Amount Paid by Customer">
 						<span class="label-input100">Amount *</span>
-						<input class="input100" type="number" name="amount" placeholder="Enter Amount Paid " required>
+						<input class="input100" type="number" id="amount" name="amount" placeholder="Enter Amount Paid " required>
+					</div>
+					
+					<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Enter Amount Paid by Customer">
+						<span class="label-input100">Next Due Date *</span>
+						<input class="input100" type="date" id="nextduedate" name="amount" placeholder="Enter Next Due Date " required>
 					</div>
 
 					<div class="wrap-input100 bg0 rs1-alert-validate">
 						<span class="label-input100">Remarks</span>
-						<textarea class="input100" name="remarks" placeholder="Your message here..."></textarea>
+						<textarea class="input100" name="remarks" id="remarks" placeholder="Your message here..."></textarea>
 					</div>
 
 					<div class="container-contact100-form-btn space">
-						<button class="contact100-form-btn">
+						<button type="button" onclick="paymentForm()" class="contact100-form-btn" id="submitAgentForm">
 							<span>
-								<a href="agent.html">Submit Entry</a>
+								<a>Submit Entry</a>
 								<i aria-hidden="true"></i>
 							</span>
 						</button>
 					</div>
 					</div>
+					<div id="errordiv1">
+           
+                      </div>
 
 				</form>
 			</div>

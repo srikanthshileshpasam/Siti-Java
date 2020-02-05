@@ -4,11 +4,11 @@ package com.model;
 public class LoginVO {
 
 	
-	public String id;
-	public String getId() {
+	public int id;
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getPass() {

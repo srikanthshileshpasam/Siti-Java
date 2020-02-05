@@ -2,6 +2,7 @@ package com.service;
 
 import com.dao.AgentDAO;
 import com.model.CustomerVO;
+import com.model.TransactionVO;
 
 public class AgentService {
 
@@ -19,5 +20,19 @@ public class AgentService {
 		
 	}
 	
+	public int submitTransaction(TransactionVO lTransactionVO)
+	{
+		
+		System.out.println("In AgentService method = submitTransaction() ");
+		AgentDAO lAgentDAO= new AgentDAO();
+	
+		
+		int result =  lAgentDAO.submitTransaction(lTransactionVO);
+	    
+		
+		return result;
+		
+		
+	}
 	
 }

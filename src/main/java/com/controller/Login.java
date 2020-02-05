@@ -37,8 +37,8 @@ public class Login {
 		request.getSession().setAttribute("page","home");
 		else if (result.getUserType().equals("admin"))
 		request.getSession().setAttribute("page","adminHome");
-		
 		request.getSession().setAttribute("name",result.getUserName());
+		request.getSession().setAttribute("userId",result.getId());
 		return new ModelAndView(request.getSession().getAttribute("page")+"");
 		}
 		request.getSession().setAttribute("page","index");

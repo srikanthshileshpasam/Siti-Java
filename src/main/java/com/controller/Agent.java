@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.model.CustomerVO;
+import com.model.TransactionVO;
 import com.service.AgentService;
 
 @Controller 
@@ -29,5 +30,26 @@ public class Agent {
 		
 		
 		return lCustomerVO;
+    }
+	
+	
+@RequestMapping(value="/submitTransaction", method = { RequestMethod.GET, RequestMethod.POST })
+	
+	public @ResponseBody int submitTransaction(@RequestBody TransactionVO lTransactionVO ,HttpServletRequest request) throws IOException
+	{
+	
+		AgentService lAgentService=new AgentService();
+		System.out.println(request.getSession().getAttribute("userId"));
+		System.out.println(request.getSession().getAttribute("name"));
+		int agentId= Integer.parseInt(request.getSession().getAttribute("userId")+"");
+		String name = (String) request.getSession().getAttribute("name");
+		System.out.println(agentId);
+		System.out.println(name);
+		lTransactionVO.setAgent_id(agentId);
+		lTransactionVO.setAgent_name(name);
+		int result=lAgentService.submitTransaction(lTransactionVO);
+		
+		
+		return result;
     }
 }

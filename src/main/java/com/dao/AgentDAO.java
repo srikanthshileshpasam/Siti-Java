@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import com.model.CustomerVO;
+import com.model.TransactionVO;
 
 
 public class AgentDAO {
@@ -67,6 +68,62 @@ public class AgentDAO {
 		}
 		
 		return respCustVO;
+		
+		
+	}
+	
+	
+	public int submitTransaction(TransactionVO lTransactionVO)
+	{
+		System.out.println("In AgentDAO method = submitTransaction() ");
+		CustomerVO respCustVO =new CustomerVO();
+		 int result =0;
+		 int finalResult=0;
+		try {
+		Connection conn=getConnection();
+	    PreparedStatement pstmt=null;
+	    if(conn!=null)
+	    {
+	    	String selectSQL="insert into [transaction] (vc_no, agent_id,receipt_num,payment_method,amount_paid,package,transaction_date,remarks,agent_name) values (?,?,?,?,?,?,datetime('now'),?,?)" ;
+	        pstmt=conn.prepareStatement(selectSQL);
+	        pstmt.setLong(1, lTransactionVO.getVc_no());
+	        pstmt.setLong(2, lTransactionVO.getAgent_id());
+	        pstmt.setLong(3, lTransactionVO.getReceipt_no());
+	        pstmt.setString(4, lTransactionVO.getPaymentmethod());
+	        pstmt.setDouble(5, lTransactionVO.getAmount());
+	        pstmt.setString(6, lTransactionVO.getPkg());
+	        pstmt.setString(7, lTransactionVO.getRemarks());
+	        pstmt.setString(8, lTransactionVO.getAgent_name());
+	        
+	        result=pstmt.executeUpdate();
+	        
+	        
+	        if(result!=0)
+	        {
+	        	  PreparedStatement pstmt1=null;
+	        	  String updateSQL="update customer_detail set last_paid=strftime('%d-%m-%Y','now'),package=?,next_bill_date= strftime('%d-%m-%Y', ?/1000.0, 'unixepoch') where vc_no=?" ;
+	  	          pstmt=conn.prepareStatement(updateSQL);
+	  	          pstmt.setString(1, lTransactionVO.getPkg());
+		          pstmt.setDate(2, lTransactionVO.getNextDueDate());
+		          pstmt.setLong(3, lTransactionVO.getVc_no());
+		          
+		          finalResult=pstmt.executeUpdate();
+	        	
+	        	
+	        	
+	        }
+	       
+		
+	    }
+	    
+		}
+		
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return finalResult;
 		
 		
 	}
